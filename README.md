@@ -1,10 +1,10 @@
-# Jarvis
+# Continuum
 
 **A persistent, model-independent personal AI control plane.**
 
-Jarvis is an independent systems project focused on a problem that ordinary chat interfaces do not solve well: giving an AI assistant durable identity, memory, state, task execution, scheduling, permissions, and auditability that belong to the user rather than to any one model provider.
+Continuum is an independent systems project focused on a problem that ordinary chat interfaces do not solve well: giving an AI assistant durable identity, memory, state, task execution, scheduling, permissions, and auditability that belong to the user rather than to any one model provider.
 
-> Frontier models are workers. Jarvis owns the state.
+> Frontier models are workers. Continuum owns the state.
 
 The production source repository is private. This repository is a technical showcase of the architecture, design decisions, and engineering work behind the system.
 
@@ -12,13 +12,13 @@ The production source repository is private. This repository is a technical show
 
 Most AI assistants are session-centric. Their useful state is fragmented across conversations, providers, and devices, and long-running work is difficult to make durable or auditable.
 
-Jarvis is designed as a **persistent personal-AI control plane**: a system that can remember, retrieve, schedule, route, and resume work independently of whichever model happens to perform the reasoning or coding step.
+Continuum is designed as a **persistent personal-AI control plane**: a system that can remember, retrieve, schedule, route, and resume work independently of whichever model happens to perform the reasoning or coding step.
 
 ## Architecture
 
 ```mermaid
 flowchart TD
-    C[Client / Conversation] --> API[Jarvis API]
+    C[Client / Conversation] --> API[Continuum API]
     API --> AUTH[Owner-scoped auth]
     API --> MEM[Memory + Retrieval]
     API --> TASKS[Durable Tasks]
@@ -40,7 +40,7 @@ flowchart TD
 ## Core engineering ideas
 
 ### Durable memory with provenance
-Jarvis separates raw conversation history from derived memory. Memories are grounded in immutable evidence, carry confidence and provenance, and can be superseded without rewriting history.
+Continuum separates raw conversation history from derived memory. Memories are grounded in immutable evidence, carry confidence and provenance, and can be superseded without rewriting history.
 
 The memory layer includes:
 
@@ -77,7 +77,7 @@ The architecture is intentionally conservative around state mutation. Important 
 
 ## Engineering scope
 
-Jarvis has grown through a milestone-based architecture roadmap rather than as a single prompt-driven prototype. The system includes thousands of automated tests spanning persistence, routing, memory, task lifecycle, concurrency, idempotency, authentication, and failure behavior.
+Continuum has grown through a milestone-based architecture roadmap rather than as a single prompt-driven prototype. The system has an automated test suite covering persistence, routing, memory, task lifecycle, concurrency, idempotency, authentication, and failure behavior.
 
 Representative areas of work:
 
@@ -100,7 +100,7 @@ Representative areas of work:
 
 ## Source availability
 
-The production repository is private because Jarvis contains personal-assistant infrastructure, authentication logic, deployment assumptions, and ongoing experimental architecture.
+The production repository is private because Continuum contains personal-assistant infrastructure, authentication logic, deployment assumptions, and ongoing experimental architecture.
 
 This showcase intentionally contains **no credentials, private user data, production configuration, or proprietary source code**.
 

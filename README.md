@@ -26,6 +26,10 @@ The goal is straightforward: a useful assistant should not forget its work becau
 
 ## Durable execution, checkpointing, and continuation
 
+![Animated Continuum execution sequence showing claim, checkpoint, resume, wait, resolution, and result](assets/architecture/continuum-execution-animated.svg)
+
+*Animated architectural walkthrough (8-second loop). Checkpoint continuation and wait resolution do not automatically trigger execution; a later attempt requires an explicit execute request.*
+
 ![Continuum durable execution state machine, outcomes and stale-lease recovery](assets/architecture/durable-execution.svg)
 
 A task is **durable work**, not an HTTP request or a model conversation. Its definition, attempts, ownership, continuation state, and terminal result are persisted independently of the process executing it.
@@ -51,8 +55,6 @@ A worker failure is not a reason to erase progress. When a lease expires, recove
 - Retry paths must not publish a second terminal result for an already completed task.
 
 </details>
-
-<!-- Optional short synthetic recovery GIF goes here after its binary asset is uploaded. -->
 
 ## Two routing layers, not one
 
